@@ -1,0 +1,22 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+
+# Build outputs
+publish/
+publish-*/
+dist/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# Test results
+TestResults/
+coverage/
+
+# NuGet
+*.nupkg
