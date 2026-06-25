@@ -5,7 +5,7 @@
   "architecture": {
     "64bit": {
       "url": "https://github.com/llm-supermarket/rclone-encrypt-test-kimi-csharp/releases/download/v1.0.0/rclone-encrypt-test-kimi-csharp-windows-amd64.exe",
-      "hash": "PLACEHOLDER",
+      "hash": "c4a0c720f793deea0d42125f4950af8638b718db01f17fa1cb3d2e13bbab3673",
       "bin": [
         [
           "rclone-encrypt-test-kimi-csharp-windows-amd64.exe",
