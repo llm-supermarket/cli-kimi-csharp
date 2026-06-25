@@ -10,16 +10,15 @@ $base = "https://github.com/$repo/releases/download/v$Version"
 
 $hash = @{}
 foreach ($platform in $platforms) {
-    $url = "$base/rclone-encrypt-test-kimi-csharp-$platform.tar.gz"
-    $tempFile = Join-Path ([System.IO.Path]::GetTempPath()) "rclone-encrypt-test-kimi-csharp-$platform.tar.gz"
+    $artifactName = "rclone-encrypt-test-kimi-csharp-$platform.tar.gz"
+    $artifactPath = Join-Path $PSScriptRoot "artifacts" $artifactName
 
-    Write-Host "Downloading $url ..."
-    Invoke-WebRequest -Uri $url -OutFile $tempFile
+    if (-not (Test-Path $artifactPath)) {
+        throw "Unable to locate $artifactName at $artifactPath"
+    }
 
-    $hash[$platform] = (Get-FileHash -Path $tempFile -Algorithm SHA256).Hash.ToLower()
+    $hash[$platform] = (Get-FileHash -Path $artifactPath -Algorithm SHA256).Hash.ToLower()
     Write-Host "SHA256 for ${platform}: $($hash[$platform])"
-
-    Remove-Item $tempFile
 }
 
 $formula = @"
