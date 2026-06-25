@@ -15,7 +15,9 @@ public class CliTests : IDisposable
     {
         _repoRoot = GetRepoRoot();
         _projectPath = Path.Combine(_repoRoot, "src", "RcloneEncrypt.Cli", "RcloneEncrypt.Cli.csproj");
-        _cliPath = Path.Combine(_repoRoot, "src", "RcloneEncrypt.Cli", "bin", "Debug", "net10.0", "rclone-encrypt-test-kimi-csharp.dll");
+
+        string configuration = GetBuildConfiguration();
+        _cliPath = Path.Combine(_repoRoot, "src", "RcloneEncrypt.Cli", "bin", configuration, "net10.0", "rclone-encrypt-test-kimi-csharp.dll");
     }
 
     public void Dispose()
@@ -222,5 +224,16 @@ public class CliTests : IDisposable
         }
 
         return directory ?? throw new InvalidOperationException("Could not find repository root.");
+    }
+
+    private static string GetBuildConfiguration()
+    {
+        string assemblyLocation = AppContext.BaseDirectory;
+        if (assemblyLocation.Contains($"{Path.DirectorySeparatorChar}Release{Path.DirectorySeparatorChar}", StringComparison.OrdinalIgnoreCase))
+        {
+            return "Release";
+        }
+
+        return "Debug";
     }
 }
