@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetLibVersion)</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Norgerman.Cryptography.Scrypt" />
+    <PackageReference Include="TweetNaclSharp" />
+  </ItemGroup>
+
+</Project>
